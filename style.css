@@ -1,0 +1,434 @@
+/* Импорт современных шрифтов и глобальные настройки */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #0a0a0f;
+    background-image: 
+        radial-gradient(circle at 25% 0%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 100%, rgba(138, 43, 226, 0.03) 0%, transparent 50%);
+    color: #eef5ff;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* Анимированный фон с движущимися линиями */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 255, 0.02) 2px,
+        rgba(0, 255, 255, 0.02) 4px
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(0, 20, 30, 0.4), #0a0a0f);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Стилизация скроллбара */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #14141c;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00ffff, #8a2be2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #33ffff, #a55eff);
+}
+
+/* Основной контент с анимацией появления */
+main {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2rem 2.5rem;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Шапка с неоновым эффектом и стеклом */
+header {
+    background: rgba(10, 10, 15, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.link-header {
+    text-decoration: none;
+    font-weight: 600;
+    color: #00ffff;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    padding: 0.6rem 1.5rem;
+    border-radius: 40px;
+    position: relative;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.link-header:hover {
+    color: #0a0a0f;
+    background: #00ffff;
+    border-color: #00ffff;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Навигация на главной — ховеры с неоном */
+nav {
+    display: flex;
+    gap: 1.8rem;
+    justify-content: center;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.link-nav {
+    text-decoration: none;
+    font-weight: 600;
+    color: #ccddff;
+    background: rgba(20, 20, 35, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 0.8rem 2rem;
+    border-radius: 60px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(138, 43, 226, 0.4);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.link-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.link-nav:hover::before {
+    left: 100%;
+}
+
+.link-nav:hover {
+    color: #00ffff;
+    border-color: #00ffff;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Заголовки h1 — неоновый градиент и 3D эффект */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00ffff, #8a2be2, #ff00cc);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientShift 4s ease infinite;
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    border-left: 4px solid #00ffff;
+    padding-left: 1.5rem;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1.2rem 0;
+    background: linear-gradient(95deg, #ffffff, #88aaff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.01em;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, #00ffff, #8a2be2, transparent);
+    border-radius: 4px;
+}
+
+/* Текстовые блоки с глянцем */
+.text-big {
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(138, 43, 226, 0.1));
+    backdrop-filter: blur(8px);
+    padding: 1rem 2rem;
+    border-radius: 60px;
+    display: inline-block;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}
+
+/* Списки с неоновыми маркерами */
+ul, ol {
+    margin: 1.8rem 0 2.5rem 2rem;
+    list-style: none;
+}
+
+li {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    padding-left: 1.8rem;
+    position: relative;
+    transition: transform 0.2s;
+    color: #d4e6ff;
+}
+
+li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+ol li::before {
+    content: counter(item) '▸';
+    counter-increment: item;
+    font-weight: 700;
+}
+
+ol {
+    counter-reset: item;
+}
+
+li:hover {
+    transform: translateX(6px);
+    color: white;
+}
+
+/* Стили для ссылок работ — карточки */
+.link-text {
+    text-decoration: none;
+    font-weight: 600;
+    color: #00ffff;
+    border-bottom: 1px dashed #8a2be2;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.link-text:hover {
+    color: #ff66cc;
+    border-bottom-color: #ff66cc;
+    text-shadow: 0 0 8px rgba(255, 102, 204, 0.5);
+}
+
+/* Параграфы с работами — карточный стиль */
+main p {
+    margin-bottom: 1rem;
+    background: rgba(18, 18, 28, 0.6);
+    backdrop-filter: blur(4px);
+    padding: 1rem 1.4rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    position: relative;
+    overflow: hidden;
+}
+
+main p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, #00ffff, #8a2be2);
+    transition: width 0.3s;
+}
+
+main p:hover {
+    border-color: rgba(0, 255, 255, 0.5);
+    transform: translateX(5px) translateY(-2px);
+    background: rgba(25, 25, 40, 0.8);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+main p:hover::before {
+    width: 5px;
+}
+
+/* Изображения с эффектом свечения и масштабирования */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 28px;
+    margin: 1.5rem 0;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    filter: brightness(0.95) contrast(1.05);
+}
+
+img:hover {
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: 0 30px 45px -12px black, 0 0 0 2px rgba(0, 255, 255, 0.6), 0 0 25px rgba(0, 255, 255, 0.3);
+    filter: brightness(1.02) contrast(1.08);
+}
+
+/* Футер — стеклянный с неоном */
+footer {
+    background: rgba(8, 8, 12, 0.85);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(0, 255, 255, 0.3);
+    padding: 2.2rem;
+    text-align: center;
+    margin-top: 5rem;
+    position: relative;
+}
+
+.social {
+    display: inline-block;
+    transition: all 0.3s;
+    border-radius: 100px;
+}
+
+.social img {
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.4), 0 0 20px rgba(0, 255, 255, 0.2);
+    transition: all 0.3s;
+    margin: 0;
+}
+
+.social:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px #00ffff, 0 0 35px #00ffff;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    main {
+        padding: 1.2rem 1.5rem;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+        padding-left: 0.8rem;
+    }
+    
+    h2 {
+        font-size: 1.7rem;
+    }
+    
+    nav {
+        gap: 1rem;
+    }
+    
+    .link-nav {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.75rem;
+    }
+    
+    .text-big {
+        font-size: 1rem;
+    }
+    
+    ul, ol {
+        margin-left: 0.5rem;
+    }
+    
+    li {
+        font-size: 0.95rem;
+    }
+}
+
+/* Анимация для страницы полезной информации — добавляем мерцание */
+a[href*="tilda"], 
+a[href*="figma"],
+a[href*="pixabay"] {
+    font-weight: 700;
+    position: relative;
+}
+
+/* Дополнительные эффекты для выделенных блоков */
+h1 + ul, h1 + p {
+    animation: fadeInUp 0.5s ease-out 0.1s backwards;
+}
+
+/* Стилизация кнопки в навигации главной страницы как активной */
+.link-nav:active {
+    transform: scale(0.97);
+}
+
+/* Оформление для страницы "Обо мне" */
+ul li:first-child {
+    font-weight: 600;
+    background: linear-gradient(90deg, transparent, rgba(0,255,255,0.1), transparent);
+}
+
+/* Интерактивный градиентный текст для ссылок в футере */
+footer .social {
+    position: relative;
+}
